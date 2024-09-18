@@ -10,6 +10,6 @@ patch -p1 < ../openresty/patches/openssl-$OPENSSL_PATCH_VER-sess_set_get_cb_yiel
 ./config shared enable-ssl3 enable-ssl3-method -g --prefix=$OPENSSL_PREFIX --libdir=lib -DPURIFY > build.log 2>&1
 make -j$(nproc)
 mkdir fakeroot
-make install_sw DESTDIR=fakeroot
-tar -czf openssl-$OPENSSL_VER-x64-focal.tar.gz fakeroot opt
+make install_sw DESTDIR=$PWD/fakeroot
+tar -czf openssl-$OPENSSL_VER-x64-focal.tar.gz -C fakeroot opt
 
